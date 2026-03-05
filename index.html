@@ -3,836 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AGENT FORGE — AI-отделы под ключ</title>
+<title>AGENT FORGE — AI-сотрудники для бизнеса | Замена отдела за 3 недели</title>
+<meta name="description" content="Строим AI-отделы под ключ: продажи, поддержка, бэк-офис. Экономия до 400К руб/мес. Запуск за 3 недели.">
+<meta property="og:title" content="AGENT FORGE — AI-отделы под ключ">
+<meta property="og:description" content="AI-сотрудники 24/7 без больничных. Экономия до 400К/мес.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root {
-  --black: #08080A;
-  --dark: #111114;
-  --card: #16161A;
-  --border: #2A2A30;
-  --muted: #72727E;
-  --light: #E4E4E7;
-  --white: #FAFAFA;
-  --accent: #FF6B2B;
-  --accent2: #FF8F5E;
-  --glow: rgba(255,107,43,0.15);
-  --green: #22C55E;
-  --blue: #3B82F6;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; font-size:16px; }
-body {
-  font-family:'Manrope',sans-serif;
-  background:var(--black);
-  color:var(--light);
-  overflow-x:hidden;
-  -webkit-font-smoothing:antialiased;
-}
-body::before {
-  content:'';
-  position:fixed; inset:0;
-  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-  pointer-events:none; z-index:9999;
-}
-::selection { background:var(--accent); color:var(--black); }
-h1,h2,h3,.brand { font-family:'Unbounded',sans-serif; }
-a { color:var(--accent); text-decoration:none; }
-.container { max-width:1140px; margin:0 auto; padding:0 24px; }
-
-@keyframes fadeUp { from{opacity:0;transform:translateY(40px)} to{opacity:1;transform:translateY(0)} }
-@keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.04)} }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
-@keyframes countUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-@keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-@keyframes glow { 0%,100%{box-shadow:0 0 20px var(--glow)} 50%{box-shadow:0 0 40px var(--glow),0 0 80px rgba(255,107,43,0.08)} }
-@keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
-
-.fade-up { animation:fadeUp 0.8s ease both; }
-.fade-up-d1 { animation:fadeUp 0.8s 0.1s ease both; }
-.fade-up-d2 { animation:fadeUp 0.8s 0.2s ease both; }
-.fade-up-d3 { animation:fadeUp 0.8s 0.3s ease both; }
-
-/* NAV */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  padding:16px 0;
-  background:rgba(8,8,10,0.85);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(42,42,48,0.5);
-}
-nav .container { display:flex; justify-content:space-between; align-items:center; }
-.brand { font-size:18px; font-weight:800; color:var(--white); letter-spacing:-0.02em; }
-.brand span { color:var(--accent); }
-nav a.nav-cta {
-  padding:10px 24px; background:var(--accent); color:var(--black);
-  font-weight:700; font-size:13px; border-radius:8px;
-  text-transform:uppercase; letter-spacing:0.05em; transition:all 0.2s;
-}
-nav a.nav-cta:hover { background:var(--accent2); transform:translateY(-1px); }
-
-/* HERO */
-.hero {
-  min-height:100vh; display:flex; align-items:center;
-  position:relative; padding:120px 0 80px; overflow:hidden;
-}
-.hero::before {
-  content:''; position:absolute; top:-200px; right:-200px;
-  width:600px; height:600px;
-  background:radial-gradient(circle,rgba(255,107,43,0.12) 0%,transparent 70%);
-  pointer-events:none;
-}
-.hero::after {
-  content:''; position:absolute; bottom:-100px; left:-100px;
-  width:400px; height:400px;
-  background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 70%);
-  pointer-events:none;
-}
-.hero-grid { display:grid; grid-template-columns:1fr 400px; gap:60px; align-items:center; }
-.hero-badge {
-  display:inline-flex; align-items:center; gap:8px;
-  padding:6px 16px 6px 8px;
-  background:rgba(255,107,43,0.1); border:1px solid rgba(255,107,43,0.2);
-  border-radius:100px; font-size:12px; font-weight:600;
-  color:var(--accent); margin-bottom:24px;
-  text-transform:uppercase; letter-spacing:0.05em;
-}
-.hero-badge .dot { width:8px; height:8px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
-.hero h1 {
-  font-size:clamp(36px,5.5vw,64px); font-weight:900;
-  line-height:1.05; letter-spacing:-0.03em;
-  color:var(--white); margin-bottom:24px;
-}
-.hero h1 .highlight {
-  background:linear-gradient(135deg,var(--accent) 0%,#FF4D4D 100%);
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-}
-.hero-sub { font-size:18px; line-height:1.7; color:var(--muted); margin-bottom:36px; max-width:520px; }
-.hero-sub strong { color:var(--light); }
-.hero-stats { display:flex; gap:32px; padding-top:32px; border-top:1px solid var(--border); }
-.hero-stat .num {
-  font-family:'Unbounded',sans-serif; font-size:36px; font-weight:800;
-  color:var(--accent); animation:countUp 0.6s 0.5s ease both;
-}
-.hero-stat .label { font-size:12px; color:var(--muted); margin-top:4px; text-transform:uppercase; letter-spacing:0.05em; }
-.hero-photo-wrap { position:relative; animation:fadeUp 1s 0.3s ease both; }
-.hero-photo {
-  width:100%; aspect-ratio:3/4; border-radius:20px; overflow:hidden;
-  position:relative; background:var(--card); border:1px solid var(--border);
-}
-.hero-photo img { width:100%; height:100%; object-fit:cover; display:block; }
-.hero-photo-placeholder {
-  width:100%; height:100%; display:flex; flex-direction:column;
-  align-items:center; justify-content:center; gap:12px;
-  color:var(--muted); font-size:14px;
-}
-.hero-photo-placeholder .icon { font-size:48px; opacity:0.3; }
-.floating-card {
-  position:absolute; padding:14px 18px;
-  background:rgba(22,22,26,0.9); backdrop-filter:blur(16px);
-  border:1px solid var(--border); border-radius:14px;
-  animation:float 4s ease-in-out infinite;
-}
-.floating-card.card-1 { bottom:40px; left:-40px; }
-.floating-card.card-2 { top:40px; right:-30px; animation-delay:1s; }
-.floating-card .fc-label { font-size:10px; color:var(--muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; }
-.floating-card .fc-value { font-family:'Unbounded',sans-serif; font-size:20px; font-weight:700; color:var(--green); }
-.floating-card .fc-value.orange { color:var(--accent); }
-
-/* MARQUEE */
-.marquee-wrap { padding:40px 0; border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden; }
-.marquee-track { display:flex; animation:marquee 30s linear infinite; width:max-content; }
-.marquee-item {
-  flex-shrink:0; padding:0 40px;
-  font-family:'Unbounded',sans-serif; font-size:14px; font-weight:600;
-  color:var(--muted); text-transform:uppercase; letter-spacing:0.1em;
-  white-space:nowrap; display:flex; align-items:center; gap:16px;
-}
-.marquee-item::after { content:'◆'; color:var(--accent); font-size:8px; }
-
-/* SECTION UTILS */
-.section-tag {
-  display:inline-block; padding:6px 16px;
-  background:rgba(255,107,43,0.08); border:1px solid rgba(255,107,43,0.15);
-  border-radius:100px; font-size:11px; font-weight:700;
-  color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:20px;
-}
-
-/* PROBLEM */
-.problem { padding:100px 0; }
-.problem-header { text-align:center; margin-bottom:60px; }
-.problem h2 { font-size:clamp(28px,4vw,44px); font-weight:800; color:var(--white); letter-spacing:-0.02em; line-height:1.15; }
-.problem h2 .strike { text-decoration:line-through; color:var(--muted); text-decoration-color:var(--accent); }
-.problem-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
-.problem-card {
-  padding:32px; background:var(--card); border:1px solid var(--border);
-  border-radius:16px; transition:all 0.3s;
-}
-.problem-card:hover { border-color:rgba(255,107,43,0.3); transform:translateY(-4px); }
-.problem-card .hormozi-num { font-family:'Unbounded',sans-serif; font-size:42px; font-weight:900; color:var(--accent); margin-bottom:8px; line-height:1; }
-.problem-card h3 { font-size:17px; font-weight:700; color:var(--white); margin-bottom:8px; }
-.problem-card p { font-size:14px; line-height:1.6; color:var(--muted); }
-
-/* FACTORY */
-.factory { padding:80px 0; position:relative; }
-.factory-inner {
-  background:linear-gradient(135deg,#1a0f08 0%,#12100e 50%,#0a1218 100%);
-  border:1px solid rgba(255,107,43,0.15); border-radius:24px;
-  padding:60px 48px; position:relative; overflow:hidden;
-}
-.factory-inner::before {
-  content:''; position:absolute; top:-100px; right:-100px;
-  width:400px; height:400px;
-  background:radial-gradient(circle,rgba(255,107,43,0.1) 0%,transparent 70%);
-  pointer-events:none;
-}
-.factory-badge {
-  display:inline-flex; align-items:center; gap:8px;
-  padding:8px 20px; background:rgba(255,107,43,0.12);
-  border:1px solid rgba(255,107,43,0.25); border-radius:100px;
-  font-family:'Unbounded',sans-serif; font-size:12px; font-weight:700;
-  color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:24px;
-}
-.factory h2 { font-size:clamp(26px,3.5vw,40px); font-weight:800; color:var(--white); line-height:1.15; letter-spacing:-0.02em; margin-bottom:16px; }
-.factory-sub { font-size:17px; color:var(--muted); line-height:1.7; max-width:600px; margin-bottom:12px; }
-.factory-sub strong { color:var(--light); }
-.factory-price-row {
-  display:inline-flex; align-items:center; gap:12px;
-  margin-bottom:36px;
-}
-.factory-price {
-  font-family:'Unbounded',sans-serif; font-size:32px; font-weight:900;
-  color:var(--accent);
-}
-.factory-price-note { font-size:13px; color:var(--muted); }
-.factory-features { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
-.factory-feat {
-  padding:20px; background:rgba(255,255,255,0.03);
-  border:1px solid rgba(255,255,255,0.06); border-radius:14px; transition:all 0.3s;
-}
-.factory-feat:hover { background:rgba(255,107,43,0.05); border-color:rgba(255,107,43,0.15); }
-.factory-feat .ff-icon { font-size:24px; margin-bottom:12px; }
-.factory-feat h4 { font-size:14px; font-weight:700; color:var(--white); margin-bottom:4px; }
-.factory-feat p { font-size:12px; color:var(--muted); line-height:1.5; }
-
-/* PACKAGES */
-.packages { padding:100px 0; }
-.packages-header { text-align:center; margin-bottom:60px; }
-.packages-header h2 { font-size:clamp(28px,4vw,44px); font-weight:800; color:var(--white); letter-spacing:-0.02em; margin-bottom:12px; }
-.packages-header p { font-size:16px; color:var(--muted); max-width:500px; margin:0 auto; }
-
-/* Single card row for Старт */
-.pkg-single { max-width:420px; margin:0 auto 40px; }
-
-.pkg-card {
-  background:var(--card); border:1px solid var(--border); border-radius:20px;
-  padding:36px; position:relative; transition:all 0.3s; display:flex; flex-direction:column;
-}
-.pkg-card:hover { transform:translateY(-6px); border-color:rgba(255,107,43,0.3); }
-.pkg-card.popular { border-color:var(--accent); background:linear-gradient(180deg,rgba(255,107,43,0.06) 0%,var(--card) 40%); }
-.pkg-popular-tag {
-  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
-  padding:5px 20px; background:var(--accent); color:var(--black);
-  font-family:'Unbounded',sans-serif; font-size:10px; font-weight:800;
-  text-transform:uppercase; letter-spacing:0.1em; border-radius:100px;
-  animation:glow 3s infinite;
-}
-.pkg-name { font-family:'Unbounded',sans-serif; font-size:20px; font-weight:700; color:var(--white); margin-bottom:4px; }
-.pkg-tagline { font-size:13px; color:var(--muted); margin-bottom:20px; }
-.pkg-price { font-family:'Unbounded',sans-serif; font-size:40px; font-weight:900; color:var(--accent); margin-bottom:2px; }
-.pkg-price-note { font-size:12px; color:var(--muted); margin-bottom:24px; }
-.pkg-divider { height:1px; background:var(--border); margin-bottom:20px; }
-.pkg-features { list-style:none; flex:1; }
-.pkg-features li {
-  display:flex; align-items:flex-start; gap:10px;
-  padding:8px 0; font-size:13px; color:var(--light); line-height:1.5;
-}
-.pkg-features li .check {
-  flex-shrink:0; width:18px; height:18px;
-  background:rgba(34,197,94,0.12); border-radius:50%;
-  display:flex; align-items:center; justify-content:center; margin-top:1px;
-}
-.pkg-features li .check svg { width:10px; height:10px; }
-.pkg-result {
-  margin-top:20px; padding:14px;
-  background:rgba(255,107,43,0.06); border-left:3px solid var(--accent);
-  border-radius:0 10px 10px 0;
-}
-.pkg-result .r-label { font-size:10px; color:var(--accent); text-transform:uppercase; font-weight:700; letter-spacing:0.08em; margin-bottom:4px; }
-.pkg-result .r-text { font-size:13px; color:var(--light); line-height:1.5; }
-.pkg-cta {
-  display:block; width:100%; margin-top:20px; padding:16px;
-  text-align:center; border-radius:12px;
-  font-family:'Unbounded',sans-serif; font-size:13px; font-weight:700;
-  text-transform:uppercase; letter-spacing:0.04em; cursor:pointer; transition:all 0.2s; border:none;
-}
-.pkg-cta.primary { background:var(--accent); color:var(--black); }
-.pkg-cta.primary:hover { background:var(--accent2); transform:translateY(-2px); }
-.pkg-cta.outline { background:transparent; border:2px solid var(--border); color:var(--light); }
-.pkg-cta.outline:hover { border-color:var(--accent); color:var(--accent); }
-
-/* ADDONS SECTION */
-.addons { padding:0 0 80px; }
-.addons-header { text-align:center; margin-bottom:40px; }
-.addons-header h2 { font-size:clamp(22px,3vw,32px); font-weight:800; color:var(--white); letter-spacing:-0.02em; margin-bottom:8px; line-height:1.2; }
-.addons-header p { font-size:14px; color:var(--muted); max-width:520px; margin:0 auto; line-height:1.6; }
-.addons-grid {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:16px; max-width:900px; margin:0 auto;
-}
-.addon-card {
-  padding:24px; background:var(--card); border:1px solid var(--border);
-  border-radius:16px; transition:all 0.3s; cursor:default;
-}
-.addon-card:hover { border-color:rgba(255,107,43,0.3); transform:translateY(-3px); }
-.addon-icon { font-size:28px; margin-bottom:12px; }
-.addon-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:6px; }
-.addon-name { font-size:15px; font-weight:700; color:var(--white); }
-.addon-price {
-  font-family:'Unbounded',sans-serif; font-size:16px; font-weight:800;
-  color:var(--accent); white-space:nowrap;
-}
-.addon-desc { font-size:12px; color:var(--muted); line-height:1.5; }
-
-/* Divider arrow */
-.section-divider {
-  text-align:center; padding:40px 0;
-}
-.divider-arrow {
-  display:inline-flex; flex-direction:column; align-items:center; gap:8px;
-  color:var(--muted); font-size:13px; font-weight:600;
-}
-.divider-arrow .arrow-icon {
-  width:40px; height:40px; border-radius:50%;
-  background:rgba(255,107,43,0.08); border:1px solid rgba(255,107,43,0.2);
-  display:flex; align-items:center; justify-content:center;
-  font-size:18px; color:var(--accent);
-}
-
-/* 2-col grid for Стандарт + Команда */
-.pkg-grid-2 {
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:20px; max-width:900px; margin:0 auto;
-}
-
-/* CASES */
-.cases { padding:80px 0; }
-.cases-header { text-align:center; margin-bottom:48px; }
-.cases-header h2 { font-size:clamp(26px,3.5vw,40px); font-weight:800; color:var(--white); letter-spacing:-0.02em; }
-.cases-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; }
-.case-card {
-  background:var(--card); border:1px solid var(--border); border-radius:18px;
-  padding:32px; transition:all 0.3s;
-}
-.case-card:hover { border-color:rgba(255,107,43,0.3); transform:translateY(-3px); }
-.case-industry { font-size:10px; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px; }
-.case-title { font-family:'Unbounded',sans-serif; font-size:16px; font-weight:700; color:var(--white); margin-bottom:12px; line-height:1.3; }
-.case-desc { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:16px; }
-.case-metrics { display:flex; gap:20px; padding-top:16px; border-top:1px solid var(--border); }
-.case-metric .cm-val { font-family:'Unbounded',sans-serif; font-size:22px; font-weight:800; color:var(--green); }
-.case-metric .cm-label { font-size:11px; color:var(--muted); margin-top:2px; }
-
-/* GUARANTEE */
-.guarantee { padding:80px 0; }
-.guarantee-inner {
-  background:var(--card); border:2px solid var(--accent); border-radius:24px;
-  padding:60px; text-align:center; position:relative; overflow:hidden;
-}
-.guarantee-inner::before {
-  content:''; position:absolute; inset:0;
-  background:radial-gradient(ellipse at center,rgba(255,107,43,0.08) 0%,transparent 60%);
-  pointer-events:none;
-}
-.guarantee h2 { font-size:clamp(24px,3vw,36px); font-weight:800; color:var(--white); margin-bottom:16px; line-height:1.2; position:relative; }
-.guarantee p { font-size:17px; color:var(--muted); line-height:1.7; max-width:620px; margin:0 auto; position:relative; }
-.guarantee p strong { color:var(--accent); }
-.guarantee-gift {
-  display:inline-flex; align-items:center; gap:10px;
-  margin-top:24px; padding:14px 28px;
-  background:rgba(34,197,94,0.08); border:1px solid rgba(34,197,94,0.2);
-  border-radius:14px; position:relative;
-}
-.guarantee-gift .gift-icon { font-size:24px; }
-.guarantee-gift .gift-text { font-size:15px; font-weight:700; color:var(--green); }
-
-/* CTA FORM */
-.cta-section { padding:80px 0 100px; }
-.cta-inner { text-align:center; max-width:600px; margin:0 auto; }
-.cta-inner h2 { font-size:clamp(28px,4vw,44px); font-weight:900; color:var(--white); letter-spacing:-0.02em; margin-bottom:12px; line-height:1.1; }
-.cta-inner .cta-sub { font-size:16px; color:var(--muted); margin-bottom:36px; line-height:1.6; }
-.cta-form { display:flex; flex-direction:column; gap:14px; max-width:440px; margin:0 auto; }
-.cta-form input, .cta-form select {
-  width:100%; padding:16px 20px; background:var(--card);
-  border:1px solid var(--border); border-radius:12px;
-  color:var(--white); font-family:'Manrope',sans-serif; font-size:15px;
-  outline:none; transition:border 0.2s;
-}
-.cta-form input::placeholder { color:var(--muted); }
-.cta-form input:focus, .cta-form select:focus { border-color:var(--accent); }
-.cta-form select {
-  appearance:none;
-  background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%2372727E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat:no-repeat; background-position:right 16px center;
-  color:var(--muted);
-}
-.cta-form select option { background:var(--dark); color:var(--light); }
-.cta-submit {
-  padding:18px; background:var(--accent); color:var(--black); border:none;
-  border-radius:12px; font-family:'Unbounded',sans-serif; font-size:15px;
-  font-weight:800; text-transform:uppercase; letter-spacing:0.04em;
-  cursor:pointer; transition:all 0.2s;
-}
-.cta-submit:hover { background:var(--accent2); transform:translateY(-2px); box-shadow:0 8px 32px var(--glow); }
-.cta-note { font-size:12px; color:var(--muted); margin-top:12px; }
-
-.success-msg { display:none; text-align:center; padding:40px; }
-.success-msg.show { display:block; animation:fadeUp 0.5s ease; }
-.success-msg .check-big {
-  width:64px; height:64px; background:rgba(34,197,94,0.1);
-  border:2px solid var(--green); border-radius:50%;
-  display:flex; align-items:center; justify-content:center;
-  margin:0 auto 20px; font-size:28px;
-}
-.success-msg h3 { font-family:'Unbounded',sans-serif; font-size:22px; color:var(--white); margin-bottom:8px; }
-.success-msg p { color:var(--muted); font-size:15px; }
-
-footer { padding:40px 0; border-top:1px solid var(--border); text-align:center; }
-footer p { font-size:12px; color:var(--muted); }
-
-@media(max-width:900px) {
-  .hero-grid { grid-template-columns:1fr; gap:40px; }
-  .hero-photo-wrap { max-width:320px; margin:0 auto; }
-  .floating-card.card-1 { left:0; bottom:20px; }
-  .floating-card.card-2 { right:0; top:20px; }
-  .hero-stats { gap:20px; flex-wrap:wrap; }
-  .guarantee-inner { padding:40px 24px; }
-  .factory-inner { padding:40px 24px; }
-  .pkg-grid-2 { grid-template-columns:1fr; }
-}
-@media(max-width:600px) {
-  .hero-stats { flex-direction:column; gap:16px; }
-  .hero-stat .num { font-size:28px; }
-  .addons-grid { grid-template-columns:1fr; }
-  .cases-grid { grid-template-columns:1fr; }
-}
+:root{--black:#08080A;--dark:#111114;--card:#16161A;--border:#2A2A30;--muted:#72727E;--light:#E4E4E7;--white:#FAFAFA;--accent:#FF6B2B;--accent2:#FF8F5E;--glow:rgba(255,107,43,0.15);--green:#22C55E;--red:#EF4444}*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;font-size:16px}body{font-family:'Manrope',sans-serif;background:var(--black);color:var(--light);overflow-x:hidden;-webkit-font-smoothing:antialiased}body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}::selection{background:var(--accent);color:var(--black)}h1,h2,h3,.brand{font-family:'Unbounded',sans-serif}a{color:var(--accent);text-decoration:none}.container{max-width:1140px;margin:0 auto;padding:0 24px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}@keyframes glow{0%,100%{box-shadow:0 0 20px var(--glow)}50%{box-shadow:0 0 40px var(--glow),0 0 80px rgba(255,107,43,0.08)}}
+.fade-up{animation:fadeUp .8s ease both}.fade-up-d1{animation:fadeUp .8s .1s ease both}.fade-up-d2{animation:fadeUp .8s .2s ease both}.fade-up-d3{animation:fadeUp .8s .3s ease both}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;background:rgba(8,8,10,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(42,42,48,0.5)}nav .container{display:flex;justify-content:space-between;align-items:center}.brand{font-size:18px;font-weight:800;color:var(--white);letter-spacing:-0.02em}.brand span{color:var(--accent)}nav a.nav-cta{padding:10px 24px;background:var(--accent);color:var(--black);font-weight:700;font-size:13px;border-radius:8px;text-transform:uppercase;letter-spacing:.05em;transition:all .2s}nav a.nav-cta:hover{background:var(--accent2);transform:translateY(-1px)}
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px;overflow:hidden}.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,107,43,0.12) 0%,transparent 70%);pointer-events:none}.hero-grid{display:grid;grid-template-columns:1fr 400px;gap:60px;align-items:center}.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px 6px 8px;background:rgba(255,107,43,0.1);border:1px solid rgba(255,107,43,0.2);border-radius:100px;font-size:12px;font-weight:600;color:var(--accent);margin-bottom:24px;text-transform:uppercase;letter-spacing:.05em}.hero-badge .dot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}.hero h1{font-size:clamp(36px,5.5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-0.03em;color:var(--white);margin-bottom:24px}.hero h1 .highlight{background:linear-gradient(135deg,var(--accent) 0%,#FF4D4D 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}.hero-sub{font-size:18px;line-height:1.7;color:var(--muted);margin-bottom:28px;max-width:520px}.hero-sub strong{color:var(--light)}
+.hero-loss{padding:16px 20px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);border-radius:14px;margin-bottom:32px;max-width:480px}.hero-loss .loss-label{font-size:11px;color:var(--red);text-transform:uppercase;font-weight:700;letter-spacing:.08em;margin-bottom:6px}.hero-loss .loss-calc{font-size:15px;color:var(--light);line-height:1.6}.hero-loss .loss-calc .big{font-family:'Unbounded',sans-serif;font-size:24px;font-weight:800;color:var(--red)}
+.hero-stats{display:flex;gap:32px;padding-top:32px;border-top:1px solid var(--border)}.hero-stat .num{font-family:'Unbounded',sans-serif;font-size:36px;font-weight:800;color:var(--accent)}.hero-stat .label{font-size:12px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.05em}.hero-photo-wrap{position:relative;animation:fadeUp 1s .3s ease both}.hero-photo{width:100%;aspect-ratio:3/4;border-radius:20px;overflow:hidden;position:relative;background:var(--card);border:1px solid var(--border)}.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}.hero-photo-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--muted);font-size:14px}.hero-photo-placeholder .icon{font-size:48px;opacity:.3}.floating-card{position:absolute;padding:14px 18px;background:rgba(22,22,26,0.9);backdrop-filter:blur(16px);border:1px solid var(--border);border-radius:14px;animation:float 4s ease-in-out infinite}.floating-card.card-1{bottom:40px;left:-40px}.floating-card.card-2{top:40px;right:-30px;animation-delay:1s}.floating-card .fc-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}.floating-card .fc-value{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:700;color:var(--green)}.floating-card .fc-value.orange{color:var(--accent)}
+.marquee-wrap{padding:40px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow:hidden}.marquee-track{display:flex;animation:marquee 30s linear infinite;width:max-content}.marquee-item{flex-shrink:0;padding:0 40px;font-family:'Unbounded',sans-serif;font-size:14px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;white-space:nowrap;display:flex;align-items:center;gap:16px}.marquee-item::after{content:'◆';color:var(--accent);font-size:8px}
+.section-tag{display:inline-block;padding:6px 16px;background:rgba(255,107,43,0.08);border:1px solid rgba(255,107,43,0.15);border-radius:100px;font-size:11px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px}
+.about{padding:80px 0}.about-inner{display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:start;max-width:700px;margin:0 auto;padding:32px;background:var(--card);border:1px solid var(--border);border-radius:20px}.about-avatar{width:80px;height:80px;border-radius:50%;background:var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:36px}.about-name{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:4px}.about-role{font-size:12px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}.about-text{font-size:14px;color:var(--muted);line-height:1.7}.about-text strong{color:var(--light)}
+.problem{padding:100px 0}.problem-header{text-align:center;margin-bottom:60px}.problem h2{font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--white);letter-spacing:-0.02em;line-height:1.15}.problem h2 .strike{text-decoration:line-through;color:var(--muted);text-decoration-color:var(--accent)}.problem-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}.problem-card{padding:32px;background:var(--card);border:1px solid var(--border);border-radius:16px;transition:all .3s}.problem-card:hover{border-color:rgba(255,107,43,0.3);transform:translateY(-4px)}.problem-card .hormozi-num{font-family:'Unbounded',sans-serif;font-size:42px;font-weight:900;color:var(--accent);margin-bottom:8px;line-height:1}.problem-card h3{font-size:17px;font-weight:700;color:var(--white);margin-bottom:8px}.problem-card p{font-size:14px;line-height:1.6;color:var(--muted)}
+.mid-cta{text-align:center;padding:40px 0 0}.mid-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:var(--accent);color:var(--black);font-family:'Unbounded',sans-serif;font-size:14px;font-weight:800;border-radius:12px;text-transform:uppercase;letter-spacing:.04em;transition:all .2s;border:none;cursor:pointer}.mid-cta-btn:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 32px var(--glow)}.mid-cta-note{font-size:12px;color:var(--muted);margin-top:8px}
+.bridge{padding:60px 0}.bridge-inner{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:800px;margin:0 auto}.bridge-card{padding:28px;border-radius:16px;border:1px solid}.bridge-card.bad{background:rgba(239,68,68,0.04);border-color:rgba(239,68,68,0.15)}.bridge-card.good{background:rgba(34,197,94,0.04);border-color:rgba(34,197,94,0.15)}.bridge-card .bc-label{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px}.bridge-card.bad .bc-label{color:var(--red)}.bridge-card.good .bc-label{color:var(--green)}.bridge-card ul{list-style:none;display:flex;flex-direction:column;gap:8px}.bridge-card li{font-size:13px;color:var(--light);line-height:1.5;padding-left:20px;position:relative}.bridge-card.bad li::before{content:'✕';position:absolute;left:0;color:var(--red);font-weight:700}.bridge-card.good li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700}
+.factory{padding:80px 0;position:relative}.factory-inner{background:linear-gradient(135deg,#1a0f08 0%,#12100e 50%,#0a1218 100%);border:1px solid rgba(255,107,43,0.15);border-radius:24px;padding:60px 48px;position:relative;overflow:hidden}.factory-inner::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(255,107,43,0.1) 0%,transparent 70%);pointer-events:none}.factory-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;background:rgba(255,107,43,0.12);border:1px solid rgba(255,107,43,0.25);border-radius:100px;font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:24px}.factory h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:var(--white);line-height:1.15;letter-spacing:-0.02em;margin-bottom:16px}.factory-sub{font-size:17px;color:var(--muted);line-height:1.7;max-width:600px;margin-bottom:12px}.factory-sub strong{color:var(--light)}.factory-price-row{display:inline-flex;align-items:center;gap:12px;margin-bottom:36px}.factory-price{font-family:'Unbounded',sans-serif;font-size:32px;font-weight:900;color:var(--accent)}.factory-price-note{font-size:13px;color:var(--muted)}.factory-features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}.factory-feat{padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;transition:all .3s}.factory-feat:hover{background:rgba(255,107,43,0.05);border-color:rgba(255,107,43,0.15)}.factory-feat .ff-icon{font-size:24px;margin-bottom:12px}.factory-feat h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px}.factory-feat p{font-size:12px;color:var(--muted);line-height:1.5}
+.packages{padding:100px 0}.packages-header{text-align:center;margin-bottom:60px}.packages-header h2{font-size:clamp(28px,4vw,44px);font-weight:800;color:var(--white);letter-spacing:-0.02em;margin-bottom:12px}.packages-header p{font-size:16px;color:var(--muted);max-width:500px;margin:0 auto}.pkg-single{max-width:420px;margin:0 auto 40px}.pkg-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:36px;position:relative;transition:all .3s;display:flex;flex-direction:column}.pkg-card:hover{transform:translateY(-6px);border-color:rgba(255,107,43,0.3)}.pkg-card.popular{border-color:var(--accent);background:linear-gradient(180deg,rgba(255,107,43,0.06) 0%,var(--card) 40%)}.pkg-popular-tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);padding:5px 20px;background:var(--accent);color:var(--black);font-family:'Unbounded',sans-serif;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;border-radius:100px;animation:glow 3s infinite}.pkg-name{font-family:'Unbounded',sans-serif;font-size:20px;font-weight:700;color:var(--white);margin-bottom:4px}.pkg-tagline{font-size:13px;color:var(--muted);margin-bottom:20px}.pkg-price-row{display:flex;align-items:center;gap:12px;margin-bottom:2px}.pkg-price{font-family:'Unbounded',sans-serif;font-size:40px;font-weight:900;color:var(--accent)}.pkg-anchor{font-size:13px;color:var(--muted);text-decoration:line-through;text-decoration-color:var(--red)}.pkg-price-note{font-size:12px;color:var(--muted);margin-bottom:24px}.pkg-divider{height:1px;background:var(--border);margin-bottom:20px}.pkg-features{list-style:none;flex:1}.pkg-features li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:13px;color:var(--light);line-height:1.5}.pkg-features li .check{flex-shrink:0;width:18px;height:18px;background:rgba(34,197,94,0.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:1px}.pkg-features li .check svg{width:10px;height:10px}.pkg-result{margin-top:20px;padding:14px;background:rgba(255,107,43,0.06);border-left:3px solid var(--accent);border-radius:0 10px 10px 0}.pkg-result .r-label{font-size:10px;color:var(--accent);text-transform:uppercase;font-weight:700;letter-spacing:.08em;margin-bottom:4px}.pkg-result .r-text{font-size:13px;color:var(--light);line-height:1.5}.pkg-cta{display:block;width:100%;margin-top:20px;padding:16px;text-align:center;border-radius:12px;font-family:'Unbounded',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;transition:all .2s;border:none}.pkg-cta.primary{background:var(--accent);color:var(--black)}.pkg-cta.primary:hover{background:var(--accent2);transform:translateY(-2px)}.pkg-cta.outline{background:transparent;border:2px solid var(--border);color:var(--light)}.pkg-cta.outline:hover{border-color:var(--accent);color:var(--accent)}
+.addons{padding:0 0 80px}.addons-header{text-align:center;margin-bottom:40px}.addons-header h2{font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--white);letter-spacing:-0.02em;margin-bottom:8px;line-height:1.2}.addons-header p{font-size:14px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.6}.addons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:900px;margin:0 auto}.addon-card{padding:24px;background:var(--card);border:1px solid var(--border);border-radius:16px;transition:all .3s;cursor:default}.addon-card:hover{border-color:rgba(255,107,43,0.3);transform:translateY(-3px)}.addon-icon{font-size:28px;margin-bottom:12px}.addon-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}.addon-name{font-size:15px;font-weight:700;color:var(--white)}.addon-price{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:800;color:var(--accent);white-space:nowrap}.addon-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.section-divider{text-align:center;padding:40px 0}.divider-arrow{display:inline-flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:13px;font-weight:600}.divider-arrow .arrow-icon{width:40px;height:40px;border-radius:50%;background:rgba(255,107,43,0.08);border:1px solid rgba(255,107,43,0.2);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--accent)}.pkg-grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.cases{padding:80px 0}.cases-header{text-align:center;margin-bottom:48px}.cases-header h2{font-size:clamp(26px,3.5vw,40px);font-weight:800;color:var(--white);letter-spacing:-0.02em}.cases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}.case-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:32px;transition:all .3s}.case-card:hover{border-color:rgba(255,107,43,0.3);transform:translateY(-3px)}.case-industry{font-size:10px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}.case-title{font-family:'Unbounded',sans-serif;font-size:16px;font-weight:700;color:var(--white);margin-bottom:12px;line-height:1.3}.case-desc{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:16px}.case-metrics{display:flex;gap:20px;padding-top:16px;border-top:1px solid var(--border)}.case-metric .cm-val{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:800;color:var(--green)}.case-metric .cm-label{font-size:11px;color:var(--muted);margin-top:2px}
+.guarantee{padding:80px 0}.guarantee-inner{background:var(--card);border:2px solid var(--accent);border-radius:24px;padding:60px;text-align:center;position:relative;overflow:hidden}.guarantee-inner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(255,107,43,0.08) 0%,transparent 60%);pointer-events:none}.guarantee h2{font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--white);margin-bottom:16px;line-height:1.2;position:relative}.guarantee p{font-size:17px;color:var(--muted);line-height:1.7;max-width:620px;margin:0 auto;position:relative}.guarantee p strong{color:var(--accent)}.guarantee-gift{display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:14px 28px;background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.2);border-radius:14px;position:relative}.guarantee-gift .gift-icon{font-size:24px}.guarantee-gift .gift-text{font-size:15px;font-weight:700;color:var(--green)}
+.cta-section{padding:80px 0 100px}.cta-inner{text-align:center;max-width:600px;margin:0 auto}.cta-inner h2{font-size:clamp(28px,4vw,44px);font-weight:900;color:var(--white);letter-spacing:-0.02em;margin-bottom:12px;line-height:1.1}.cta-inner .cta-sub{font-size:16px;color:var(--muted);margin-bottom:36px;line-height:1.6}.cta-form{display:flex;flex-direction:column;gap:14px;max-width:440px;margin:0 auto}.cta-form input,.cta-form select{width:100%;padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:12px;color:var(--white);font-family:'Manrope',sans-serif;font-size:15px;outline:none;transition:border .2s}.cta-form input::placeholder{color:var(--muted)}.cta-form input:focus,.cta-form select:focus{border-color:var(--accent)}.cta-form select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5l5 5 5-5' stroke='%2372727E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;color:var(--muted)}.cta-form select option{background:var(--dark);color:var(--light)}.cta-submit{padding:18px;background:var(--accent);color:var(--black);border:none;border-radius:12px;font-family:'Unbounded',sans-serif;font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;cursor:pointer;transition:all .2s}.cta-submit:hover{background:var(--accent2);transform:translateY(-2px);box-shadow:0 8px 32px var(--glow)}.cta-proof{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:16px;flex-wrap:wrap}.cta-proof-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}.success-msg{display:none;text-align:center;padding:40px}.success-msg.show{display:block;animation:fadeUp .5s ease}.success-msg .check-big{width:64px;height:64px;background:rgba(34,197,94,0.1);border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px}.success-msg h3{font-family:'Unbounded',sans-serif;font-size:22px;color:var(--white);margin-bottom:8px}.success-msg p{color:var(--muted);font-size:15px}
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:99;padding:12px 16px;background:rgba(8,8,10,0.95);backdrop-filter:blur(16px);border-top:1px solid var(--border);transition:opacity .3s}.sticky-cta a{display:block;width:100%;padding:14px;text-align:center;background:var(--accent);color:var(--black);font-family:'Unbounded',sans-serif;font-size:13px;font-weight:800;border-radius:10px;text-transform:uppercase;letter-spacing:.04em}
+footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}footer p{font-size:12px;color:var(--muted)}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:40px}.hero-photo-wrap{max-width:320px;margin:0 auto}.floating-card.card-1{left:0;bottom:20px}.floating-card.card-2{right:0;top:20px}.hero-stats{gap:20px;flex-wrap:wrap}.guarantee-inner{padding:40px 24px}.factory-inner{padding:40px 24px}.pkg-grid-2{grid-template-columns:1fr}.bridge-inner{grid-template-columns:1fr}.about-inner{grid-template-columns:1fr;text-align:center}.about-avatar{margin:0 auto}.sticky-cta{display:block}body{padding-bottom:70px}}
+@media(max-width:600px){.hero-stats{flex-direction:column;gap:16px}.hero-stat .num{font-size:28px}.addons-grid{grid-template-columns:1fr}.cases-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+<nav><div class="container"><div class="brand">AGENT<span>FORGE</span></div><a href="#form" class="nav-cta">Получить расчёт →</a></div></nav>
 
-<!-- NAV -->
-<nav>
-  <div class="container">
-    <div class="brand">AGENT<span>FORGE</span></div>
-    <a href="#form" class="nav-cta">Получить AI-отдел →</a>
-  </div>
-</nav>
+<section class="hero"><div class="container"><div class="hero-grid"><div>
+<div class="hero-badge fade-up"><span class="dot"></span> Осталось 3 места на март</div>
+<h1 class="fade-up-d1">Ваш отдел продаж <span class="highlight">не спит,</span><br>не болеет,<br>не увольняется</h1>
+<p class="hero-sub fade-up-d2"><strong>AI-сотрудники</strong>, которые закрывают 80% обращений за 20% бюджета вашего ФОТ. Продажи, поддержка, бэк-офис — без найма людей.</p>
+<div class="hero-loss fade-up-d2"><div class="loss-label">⚡ Посчитайте прямо сейчас</div><div class="loss-calc">3 менеджера × 150К₽ = <span class="big">450К₽</span>/мес на ФОТ<br>AI-агент делает ту же работу за <strong style="color:var(--green)">15К₽/мес</strong></div></div>
+<div class="hero-stats fade-up-d3"><div class="hero-stat"><div class="num">80%</div><div class="label">обращений<br>автоматизируем</div></div><div class="hero-stat"><div class="num">3 нед</div><div class="label">до первого<br>результата</div></div><div class="hero-stat"><div class="num">×5</div><div class="label">ROI за<br>первый год</div></div></div>
+</div><div class="hero-photo-wrap"><div class="hero-photo"><div class="hero-photo-placeholder"><div class="icon">📸</div>Замени на своё фото</div></div><div class="floating-card card-1"><div class="fc-label">Конверсия</div><div class="fc-value">+42%</div></div><div class="floating-card card-2"><div class="fc-label">Экономия на ФОТ</div><div class="fc-value orange">400К₽/мес</div></div></div></div></div></section>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-badge fade-up"><span class="dot"></span> Набираем 5 клиентов на март</div>
-        <h1 class="fade-up-d1">Ваш отдел продаж <span class="highlight">не спит,</span><br>не болеет,<br>не увольняется</h1>
-        <p class="hero-sub fade-up-d2">
-          Строим <strong>AI-отделы под ключ</strong> — продажи, поддержка, бэк-офис.
-          Не чат-боты. <strong>Цифровые сотрудники</strong>, которые закрывают
-          80% задач за 20% бюджета вашего ФОТ.
-        </p>
-        <div class="hero-stats fade-up-d3">
-          <div class="hero-stat"><div class="num">80%</div><div class="label">обращений<br>автоматизируем</div></div>
-          <div class="hero-stat"><div class="num">3 нед</div><div class="label">до первого<br>результата</div></div>
-          <div class="hero-stat"><div class="num">×5</div><div class="label">ROI за<br>первый год</div></div>
-        </div>
-      </div>
-      <div class="hero-photo-wrap">
-        <div class="hero-photo">
-          <!-- ★ ЗАМЕНИ НА СВОЁ ФОТО: <img src="your-photo.jpg" alt="Фото"> -->
-          <div class="hero-photo-placeholder">
-            <div class="icon">📸</div>Замени на своё фото<br><small style="opacity:0.5">src="your-photo.jpg"</small>
-          </div>
-        </div>
-        <div class="floating-card card-1"><div class="fc-label">Конверсия</div><div class="fc-value">+42%</div></div>
-        <div class="floating-card card-2"><div class="fc-label">Экономия на ФОТ</div><div class="fc-value orange">400К₽/мес</div></div>
-      </div>
-    </div>
-  </div>
-</section>
+<div class="marquee-wrap"><div class="marquee-track"><div class="marquee-item">Продажи 24/7</div><div class="marquee-item">Клиентская поддержка</div><div class="marquee-item">Квалификация лидов</div><div class="marquee-item">HR и онбординг</div><div class="marquee-item">Документооборот</div><div class="marquee-item">Голосовые агенты</div><div class="marquee-item">Контент-фабрика</div><div class="marquee-item">CRM-интеграция</div><div class="marquee-item">Продажи 24/7</div><div class="marquee-item">Клиентская поддержка</div><div class="marquee-item">Квалификация лидов</div><div class="marquee-item">HR и онбординг</div><div class="marquee-item">Документооборот</div><div class="marquee-item">Голосовые агенты</div><div class="marquee-item">Контент-фабрика</div><div class="marquee-item">CRM-интеграция</div></div></div>
 
-<!-- MARQUEE -->
-<div class="marquee-wrap">
-  <div class="marquee-track">
-    <div class="marquee-item">Продажи 24/7</div><div class="marquee-item">Клиентская поддержка</div>
-    <div class="marquee-item">Квалификация лидов</div><div class="marquee-item">HR и онбординг</div>
-    <div class="marquee-item">Документооборот</div><div class="marquee-item">Голосовые агенты</div>
-    <div class="marquee-item">Контент-фабрика</div><div class="marquee-item">CRM-интеграция</div>
-    <div class="marquee-item">Продажи 24/7</div><div class="marquee-item">Клиентская поддержка</div>
-    <div class="marquee-item">Квалификация лидов</div><div class="marquee-item">HR и онбординг</div>
-    <div class="marquee-item">Документооборот</div><div class="marquee-item">Голосовые агенты</div>
-    <div class="marquee-item">Контент-фабрика</div><div class="marquee-item">CRM-интеграция</div>
-  </div>
-</div>
+<section class="about"><div class="container"><div class="about-inner"><div class="about-avatar">👤</div><div><div class="about-name">Основатель AGENTFORGE</div><div class="about-role">AI-архитектор · Строю AI-отделы для бизнеса</div><div class="about-text">Я не продаю «внедрение ИИ на полгода». Я строю <strong>цифровых сотрудников</strong>, которые выходят на работу через 3 недели и окупаются за первый месяц. Каждый агент — это не бот с шаблонами, а <strong>полноценный специалист</strong>, обученный на вашем бизнесе.</div></div></div></div></section>
 
-<!-- PROBLEM -->
-<section class="problem">
-  <div class="container">
-    <div class="problem-header">
-      <div class="section-tag">Реальность</div>
-      <h2>Вы <span class="strike">нанимаете</span> людей.<br>Мы <span style="color:var(--accent)">создаём</span> сотрудников.</h2>
-    </div>
-    <div class="problem-grid">
-      <div class="problem-card">
-        <div class="hormozi-num">40%</div>
-        <h3>лидов сливаются</h3>
-        <p>Менеджер не перезвонил, забыл, ушёл на обед. AI-агент отвечает за <strong style="color:var(--accent)">0.8 секунды</strong>. Каждому. Всегда.</p>
-      </div>
-      <div class="problem-card">
-        <div class="hormozi-num">₽150К</div>
-        <h3>стоит один менеджер</h3>
-        <p>ФОТ + налоги + больничные + обучение + текучка. AI-агент стоит <strong style="color:var(--accent)">₽15К/мес</strong> и не требует мотивации.</p>
-      </div>
-      <div class="problem-card">
-        <div class="hormozi-num">88%</div>
-        <h3>пилотов проваливаются</h3>
-        <p>Студии продают «внедрение AI» на 6 месяцев. Мы запускаем <strong style="color:var(--accent)">работающего сотрудника за 3 недели</strong>. С метриками.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="problem"><div class="container"><div class="problem-header"><div class="section-tag">Реальность</div><h2>Вы <span class="strike">нанимаете</span> людей.<br>Мы <span style="color:var(--accent)">создаём</span> сотрудников.</h2></div><div class="problem-grid"><div class="problem-card"><div class="hormozi-num">40%</div><h3>лидов сливаются</h3><p>Менеджер не перезвонил, забыл, ушёл на обед. AI-агент отвечает за <strong style="color:var(--accent)">0.8 секунды</strong>. Каждому. Всегда.</p></div><div class="problem-card"><div class="hormozi-num">₽150К</div><h3>стоит один менеджер</h3><p>ФОТ + налоги + больничные + обучение + текучка. AI-агент стоит <strong style="color:var(--accent)">₽15К/мес</strong> и не уйдёт к конкурентам.</p></div><div class="problem-card"><div class="hormozi-num">88%</div><h3>пилотов проваливаются</h3><p>Студии продают «внедрение AI» на 6 месяцев. Мы запускаем <strong style="color:var(--accent)">работающего сотрудника за 3 недели</strong>.</p></div></div><div class="mid-cta"><a href="#form" class="mid-cta-btn">Хочу посчитать свою экономию →</a><div class="mid-cta-note">Бесплатный расчёт за 24 часа</div></div></div></section>
 
-<!-- AI CONTENT FACTORY -->
-<section class="factory">
-  <div class="container">
-    <div class="factory-inner">
-      <div class="factory-badge">🏭 AI-Фабрика контента</div>
-      <h2>Один агент.<br>Бесконечный контент.</h2>
-      <p class="factory-sub">
-        AI-агент, который <strong>генерирует контент от имени вашей компании</strong> —
-        посты, рассылки, описания товаров, скрипты для менеджеров, ответы клиентам.
-        Обучен на вашем tone of voice и знает ваш продукт лучше стажёра.
-      </p>
-      <div class="factory-price-row">
-        <div class="factory-price">40 000₽</div>
-        <div class="factory-price-note">разово · настройка + обучение<br>на ваших материалах</div>
-      </div>
-      <div class="factory-features">
-        <div class="factory-feat"><div class="ff-icon">✍️</div><h4>Посты и статьи</h4><p>Telegram, VC, блог — в вашем стиле, по вашим темам</p></div>
-        <div class="factory-feat"><div class="ff-icon">📧</div><h4>Email-рассылки</h4><p>Цепочки писем, триггерные сообщения, follow-up</p></div>
-        <div class="factory-feat"><div class="ff-icon">🛒</div><h4>Карточки товаров</h4><p>SEO-описания для маркетплейсов за секунды</p></div>
-        <div class="factory-feat"><div class="ff-icon">🎯</div><h4>Скрипты продаж</h4><p>Адаптивные сценарии на основе анализа лучших сделок</p></div>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="bridge"><div class="container"><div style="text-align:center;margin-bottom:32px"><div class="section-tag">Важно понимать</div><h2 style="font-size:clamp(22px,3vw,32px);font-weight:800;color:var(--white);letter-spacing:-0.02em">Это не чат-бот. Это другое.</h2></div><div class="bridge-inner"><div class="bridge-card bad"><div class="bc-label">Обычный чат-бот</div><ul><li>Отвечает по скрипту, не понимает контекст</li><li>Бесит клиентов — 53% не доверяют ботам</li><li>Не интегрирован с вашей CRM</li><li>Не помнит прошлые разговоры</li><li>Нужна ручная настройка каждого сценария</li></ul></div><div class="bridge-card good"><div class="bc-label">AI-сотрудник AGENTFORGE</div><ul><li>Понимает контекст, ведёт сложные диалоги</li><li>Отвечает как человек — с паузами и именем</li><li>Пишет в CRM, создаёт сделки, меняет статусы</li><li>Помнит каждого клиента и историю общения</li><li>Обучен на вашей базе знаний и tone of voice</li></ul></div></div></div></section>
 
-<!-- PACKAGES -->
-<section class="packages" id="packages">
-  <div class="container">
-    <div class="packages-header">
-      <div class="section-tag">Тарифы</div>
-      <h2>Начните с одного агента.<br>Вырастите в AI-отдел.</h2>
-      <p>Как iPhone → AirPods → Watch. Каждый шаг делает предыдущий ценнее.</p>
-    </div>
+<section class="factory"><div class="container"><div class="factory-inner"><div class="factory-badge">🏭 AI-Фабрика контента</div><h2>Один агент.<br>Бесконечный контент.</h2><p class="factory-sub">AI-агент, который <strong>генерирует контент от имени вашей компании</strong> — посты, рассылки, описания товаров, скрипты для менеджеров. Обучен на вашем tone of voice.</p><div class="factory-price-row"><div class="factory-price">40 000₽</div><div class="factory-price-note">разово · настройка + обучение<br>на ваших материалах</div></div><div class="factory-features"><div class="factory-feat"><div class="ff-icon">✍️</div><h4>Посты и статьи</h4><p>Telegram, VC, блог — в вашем стиле</p></div><div class="factory-feat"><div class="ff-icon">📧</div><h4>Email-рассылки</h4><p>Цепочки писем, триггерные сообщения</p></div><div class="factory-feat"><div class="ff-icon">🛒</div><h4>Карточки товаров</h4><p>SEO-описания для маркетплейсов</p></div><div class="factory-feat"><div class="ff-icon">🎯</div><h4>Скрипты продаж</h4><p>Адаптивные сценарии из лучших сделок</p></div></div></div></div></section>
 
-    <!-- ===== СТАРТ (single, centered) ===== -->
-    <div class="pkg-single">
-      <div class="pkg-card popular">
-        <div class="pkg-popular-tag">Лучший старт</div>
-        <div class="pkg-name">Старт</div>
-        <div class="pkg-tagline">Один агент — одна роль. Минимальный риск, быстрый результат.</div>
-        <div class="pkg-price">80К₽</div>
-        <div class="pkg-price-note">разово · + 5-10К₽/мес поддержка + API</div>
-        <div class="pkg-divider"></div>
-        <ul class="pkg-features">
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> 1 AI-агент (продажи / поддержка / бэк-офис)</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> 1 канал: сайт, Telegram или WhatsApp</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Сценарии и промпты под ваш бизнес</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Запуск за 2-3 недели с метриками</li>
-        </ul>
-        <div class="pkg-result">
-          <div class="r-label">Результат</div>
-          <div class="r-text">Агент обрабатывает до 80% типовых обращений. Круглосуточно. Без больничных.</div>
-        </div>
-        <a href="#form" class="pkg-cta primary">Начать с 80К₽ →</a>
-      </div>
-    </div>
+<section class="packages" id="packages"><div class="container"><div class="packages-header"><div class="section-tag">Тарифы</div><h2>Начните с одного агента.<br>Вырастите в AI-отдел.</h2><p>Каждый шаг делает предыдущий ценнее. Начните с малого — масштабируйте по результату.</p></div>
 
-    <!-- ===== ДОПОЛНЕНИЯ К СТАРТ ===== -->
-    <div class="addons">
-      <div class="addons-header">
-        <div class="section-divider">
-          <div class="divider-arrow">
-            <div class="arrow-icon">+</div>
-            Не хотите сразу на «Стандарт»?
-          </div>
-        </div>
-        <h2 style="margin-top:24px;">Прокачайте «Старт»<br>отдельными модулями</h2>
-        <p>Докупайте только то, что нужно. Каждый модуль делает вашего агента сильнее — как AirPods к iPhone.</p>
-      </div>
-      <div class="addons-grid">
-        <div class="addon-card">
-          <div class="addon-icon">🔗</div>
-          <div class="addon-top"><div class="addon-name">CRM-интеграция</div><div class="addon-price">35К₽</div></div>
-          <div class="addon-desc">Bitrix24, AmoCRM, 1С — агент пишет в CRM, создаёт сделки, обновляет статусы</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-icon">📚</div>
-          <div class="addon-top"><div class="addon-name">База знаний (RAG)</div><div class="addon-price">40К₽</div></div>
-          <div class="addon-desc">Загрузите документы — агент знает всё о вашей компании и отвечает точно</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-icon">📱</div>
-          <div class="addon-top"><div class="addon-name">+1 канал связи</div><div class="addon-price">25К₽</div></div>
-          <div class="addon-desc">Telegram, WhatsApp, виджет на сайт, email — подключаем любой</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-icon">🤖</div>
-          <div class="addon-top"><div class="addon-name">+1 агент</div><div class="addon-price">60К₽</div></div>
-          <div class="addon-desc">Новая роль в вашей AI-команде: продажи, поддержка, HR или контент</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-icon">🎙️</div>
-          <div class="addon-top"><div class="addon-name">Голосовой модуль</div><div class="addon-price">80К₽</div></div>
-          <div class="addon-desc">Агент принимает и совершает звонки с естественной речью</div>
-        </div>
-        <div class="addon-card">
-          <div class="addon-icon">📊</div>
-          <div class="addon-top"><div class="addon-name">Аналитический дашборд</div><div class="addon-price">30К₽</div></div>
-          <div class="addon-desc">Метрики, конверсии, качество ответов — всё на одном экране</div>
-        </div>
-      </div>
-    </div>
+<div class="pkg-single"><div class="pkg-card popular"><div class="pkg-popular-tag">Лучший старт</div><div class="pkg-name">Старт</div><div class="pkg-tagline">Один агент — одна роль. Минимальный риск, быстрый результат.</div><div class="pkg-price-row"><div class="pkg-price">80К₽</div><div class="pkg-anchor">vs 150К₽/мес менеджер</div></div><div class="pkg-price-note">разово · + 5-10К₽/мес поддержка + API</div><div class="pkg-divider"></div><ul class="pkg-features"><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> 1 AI-агент (продажи / поддержка / бэк-офис)</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> 1 канал: сайт, Telegram или WhatsApp</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Сценарии и промпты под ваш бизнес</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Запуск за 2-3 недели с метриками</li></ul><div class="pkg-result"><div class="r-label">Результат</div><div class="r-text">Агент обрабатывает до 80% типовых обращений. Круглосуточно. Без больничных.</div></div><a href="#form" class="pkg-cta primary">Начать с 80К₽ →</a></div></div>
 
-    <!-- ===== DIVIDER ===== -->
-    <div class="section-divider">
-      <div class="divider-arrow">
-        <div class="arrow-icon">⬇</div>
-        Хотите сразу больше? Выберите готовый пакет
-      </div>
-    </div>
+<div class="addons"><div class="addons-header"><div class="section-divider"><div class="divider-arrow"><div class="arrow-icon">+</div>Не хотите сразу на «Стандарт»?</div></div><h2 style="margin-top:24px">Прокачайте «Старт»<br>отдельными модулями</h2><p>Докупайте только то, что нужно. Каждый модуль делает вашего агента сильнее.</p></div><div class="addons-grid"><div class="addon-card"><div class="addon-icon">🔗</div><div class="addon-top"><div class="addon-name">CRM-интеграция</div><div class="addon-price">35К₽</div></div><div class="addon-desc">Bitrix24, AmoCRM, 1С — агент создаёт сделки</div></div><div class="addon-card"><div class="addon-icon">📚</div><div class="addon-top"><div class="addon-name">База знаний (RAG)</div><div class="addon-price">40К₽</div></div><div class="addon-desc">Агент знает всё о вашей компании</div></div><div class="addon-card"><div class="addon-icon">📱</div><div class="addon-top"><div class="addon-name">+1 канал связи</div><div class="addon-price">25К₽</div></div><div class="addon-desc">Telegram, WhatsApp, виджет, email</div></div><div class="addon-card"><div class="addon-icon">🤖</div><div class="addon-top"><div class="addon-name">+1 агент</div><div class="addon-price">60К₽</div></div><div class="addon-desc">Новая роль: продажи, поддержка, HR</div></div><div class="addon-card"><div class="addon-icon">🎙️</div><div class="addon-top"><div class="addon-name">Голосовой модуль</div><div class="addon-price">80К₽</div></div><div class="addon-desc">Агент принимает и совершает звонки</div></div><div class="addon-card"><div class="addon-icon">📊</div><div class="addon-top"><div class="addon-name">Аналитический дашборд</div><div class="addon-price">30К₽</div></div><div class="addon-desc">Метрики, конверсии, качество ответов</div></div></div></div>
 
-    <!-- ===== СТАНДАРТ + КОМАНДА ===== -->
-    <div class="pkg-grid-2" style="margin-top:40px;">
-      <!-- СТАНДАРТ -->
-      <div class="pkg-card">
-        <div class="pkg-name">Стандарт</div>
-        <div class="pkg-tagline">Агент встроен в ваш бизнес. Всё из «Старт» + CRM + память + аналитика.</div>
-        <div class="pkg-price">180К₽</div>
-        <div class="pkg-price-note">разово · + 15-25К₽/мес поддержка + развитие</div>
-        <div class="pkg-divider"></div>
-        <ul class="pkg-features">
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Всё из «Старт» включено</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> CRM-интеграция (Bitrix24 / AmoCRM)</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> База знаний компании (RAG)</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Память диалогов и контекст клиента</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> 2 канала + дашборд аналитики</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Ежемесячная оптимизация сценариев</li>
-        </ul>
-        <div class="pkg-result">
-          <div class="r-label">Результат</div>
-          <div class="r-text">Полноценный AI-сотрудник в вашей CRM. Экономия 150-400К₽/мес на ФОТ.</div>
-        </div>
-        <a href="#form" class="pkg-cta outline">Выбрать Стандарт →</a>
-      </div>
+<div class="section-divider"><div class="divider-arrow"><div class="arrow-icon">⬇</div>Хотите сразу всё? Готовые пакеты со скидкой</div></div>
 
-      <!-- КОМАНДА -->
-      <div class="pkg-card">
-        <div class="pkg-name">Команда</div>
-        <div class="pkg-tagline">AI-отдел под ключ. 2-4 агента, голос, все каналы, выделенный менеджер.</div>
-        <div class="pkg-price">350К₽</div>
-        <div class="pkg-price-note">разово · + 30-50К₽/мес поддержка + развитие</div>
-        <div class="pkg-divider"></div>
-        <ul class="pkg-features">
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Всё из «Стандарт» включено</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> 2–4 агента с разными ролями</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Мультиагентная связка</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Голосовой агент (звонки)</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Все каналы + продвинутая аналитика</li>
-          <li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Выделенный менеджер + квартальный аудит</li>
-        </ul>
-        <div class="pkg-result">
-          <div class="r-label">Результат</div>
-          <div class="r-text">AI-команда из 2-4 агентов. Замена отдела из 3-5 человек. Полная автономия.</div>
-        </div>
-        <a href="#form" class="pkg-cta outline">Обсудить Команду →</a>
-      </div>
-    </div>
+<div class="pkg-grid-2" style="margin-top:40px"><div class="pkg-card"><div class="pkg-name">Стандарт</div><div class="pkg-tagline">Агент встроен в бизнес. CRM + память + аналитика.</div><div class="pkg-price-row"><div class="pkg-price">180К₽</div><div class="pkg-anchor">vs 300К₽/мес 2 менеджера</div></div><div class="pkg-price-note">разово · + 15-25К₽/мес · <strong style="color:var(--green)">экономия 30К₽ vs модули</strong></div><div class="pkg-divider"></div><ul class="pkg-features"><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Всё из «Старт» включено</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> CRM-интеграция (Bitrix24 / AmoCRM)</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> База знаний компании (RAG)</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Память диалогов и контекст клиента</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> 2 канала + дашборд аналитики</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Ежемесячная оптимизация сценариев</li></ul><div class="pkg-result"><div class="r-label">Результат</div><div class="r-text">AI-сотрудник в CRM. Экономия 150-400К₽/мес на ФОТ.</div></div><a href="#form" class="pkg-cta outline">Выбрать Стандарт →</a></div>
 
-  </div>
-</section>
+<div class="pkg-card"><div class="pkg-name">Команда</div><div class="pkg-tagline">AI-отдел под ключ. 2-4 агента, голос, все каналы.</div><div class="pkg-price-row"><div class="pkg-price">350К₽</div><div class="pkg-anchor">vs 750К₽/мес 5 сотрудников</div></div><div class="pkg-price-note">разово · + 30-50К₽/мес поддержка + развитие</div><div class="pkg-divider"></div><ul class="pkg-features"><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Всё из «Стандарт» включено</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> 2–4 агента с разными ролями</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Мультиагентная связка</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Голосовой агент (звонки)</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Все каналы + продвинутая аналитика</li><li><span class="check"><svg viewBox="0 0 10 10"><path d="M2 5.5L4 7.5L8 3" stroke="#22C55E" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg></span> Выделенный менеджер + квартальный аудит</li></ul><div class="pkg-result"><div class="r-label">Результат</div><div class="r-text">AI-команда из 2-4 агентов. Замена отдела из 3-5 человек.</div></div><a href="#form" class="pkg-cta outline">Обсудить Команду →</a></div></div></div></section>
 
-<!-- CASES -->
-<section class="cases">
-  <div class="container">
-    <div class="cases-header">
-      <div class="section-tag">Кейсы рынка</div>
-      <h2>Что уже работает в России</h2>
-    </div>
-    <div class="cases-grid">
-      <div class="case-card">
-        <div class="case-industry">Финтех</div>
-        <div class="case-title">AI-агент валютного контроля</div>
-        <div class="case-desc">Анализ договора за 1 минуту вместо 2 часов. Обрабатывает 2700 контрактов в сутки автономно.</div>
-        <div class="case-metrics">
-          <div class="case-metric"><div class="cm-val">120×</div><div class="cm-label">быстрее</div></div>
-          <div class="case-metric"><div class="cm-val">80%</div><div class="cm-label">точность</div></div>
-        </div>
-      </div>
-      <div class="case-card">
-        <div class="case-industry">Образование</div>
-        <div class="case-title">AI-консультант для родителей</div>
-        <div class="case-desc">Агент консультирует, записывает на пробные уроки и продаёт онлайн-курсы автоматически.</div>
-        <div class="case-metrics">
-          <div class="case-metric"><div class="cm-val">+42%</div><div class="cm-label">конверсия</div></div>
-          <div class="case-metric"><div class="cm-val">24/7</div><div class="cm-label">без выходных</div></div>
-        </div>
-      </div>
-      <div class="case-card">
-        <div class="case-industry">Телеком</div>
-        <div class="case-title">Автоматизация рутины</div>
-        <div class="case-desc">AI-агенты взяли на себя типовые операции контакт-центра и бэк-офиса крупного оператора.</div>
-        <div class="case-metrics">
-          <div class="case-metric"><div class="cm-val">–70%</div><div class="cm-label">затраты</div></div>
-          <div class="case-metric"><div class="cm-val">–80 чел</div><div class="cm-label">экономия ФОТ</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="cases"><div class="container"><div class="cases-header"><div class="section-tag">Кейсы рынка</div><h2>Что уже работает в России</h2></div><div class="cases-grid"><div class="case-card"><div class="case-industry">Финтех</div><div class="case-title">AI-агент валютного контроля</div><div class="case-desc">Анализ договора за 1 минуту вместо 2 часов. 2700 контрактов в сутки.</div><div class="case-metrics"><div class="case-metric"><div class="cm-val">120×</div><div class="cm-label">быстрее</div></div><div class="case-metric"><div class="cm-val">80%</div><div class="cm-label">точность</div></div></div></div><div class="case-card"><div class="case-industry">Образование</div><div class="case-title">AI-консультант для родителей</div><div class="case-desc">Агент консультирует, записывает на уроки и продаёт курсы автоматически.</div><div class="case-metrics"><div class="case-metric"><div class="cm-val">+42%</div><div class="cm-label">конверсия</div></div><div class="case-metric"><div class="cm-val">24/7</div><div class="cm-label">без выходных</div></div></div></div><div class="case-card"><div class="case-industry">Телеком</div><div class="case-title">Автоматизация контакт-центра</div><div class="case-desc">AI-агенты взяли типовые операции контакт-центра и бэк-офиса.</div><div class="case-metrics"><div class="case-metric"><div class="cm-val">–70%</div><div class="cm-label">затраты</div></div><div class="case-metric"><div class="cm-val">–80 чел</div><div class="cm-label">экономия ФОТ</div></div></div></div></div></div></section>
 
-<!-- GUARANTEE -->
-<section class="guarantee">
-  <div class="container">
-    <div class="guarantee-inner">
-      <h2>🔒 Гарантия результата</h2>
-      <p>
-        Если за <strong>30 дней</strong> после запуска вы не увидите результат —
-        мы <strong>добавим одно дополнение на ваш выбор бесплатно</strong>.<br><br>
-        CRM-интеграция, база знаний, новый канал, аналитика — любой модуль до 40К₽ за наш счёт.<br>
-        Без вопросов. Без мелкого шрифта.
-      </p>
-      <div class="guarantee-gift">
-        <span class="gift-icon">🎁</span>
-        <span class="gift-text">+1 модуль бесплатно, если нет результата за 30 дней</span>
-      </div>
-    </div>
-  </div>
-</section>
+<section class="guarantee"><div class="container"><div class="guarantee-inner"><h2>🔒 Гарантия результата</h2><p>Если за <strong>30 дней</strong> после запуска вы не увидите результат — мы <strong>добавим одно дополнение на ваш выбор бесплатно</strong>.<br><br>CRM-интеграция, база знаний, новый канал, аналитика — любой модуль до 40К₽ за наш счёт.<br>Без вопросов. Без мелкого шрифта.</p><div class="guarantee-gift"><span class="gift-icon">🎁</span><span class="gift-text">+1 модуль бесплатно, если нет результата за 30 дней</span></div></div></div></section>
 
-<!-- CTA FORM -->
-<section class="cta-section" id="form">
-  <div class="container">
-    <div class="cta-inner">
-      <div class="section-tag" style="margin-bottom:20px">Оставить заявку</div>
-      <h2>Получите AI-сотрудника<br>за 3 недели</h2>
-      <p class="cta-sub">Расскажите о задаче — подберём агента и посчитаем экономию за 24 часа</p>
+<section class="cta-section" id="form"><div class="container"><div class="cta-inner"><div class="section-tag" style="margin-bottom:20px">Оставить заявку</div><h2>Узнайте, сколько вы сэкономите<br>уже в первый месяц</h2><p class="cta-sub">Расскажите о задаче — подберём агента и посчитаем вашу экономию за 24 часа</p><div id="formBlock"><form class="cta-form" id="leadForm" onsubmit="return submitForm(event)"><input type="text" name="name" placeholder="Ваше имя" required><input type="tel" name="phone" placeholder="Телефон или Telegram" required><select name="interest" required><option value="" disabled selected>Что хотите автоматизировать?</option><option value="sales_80k">🎯 Продажи и лидогенерация — от 80К₽</option><option value="support_80k">🎧 Клиентская поддержка — от 80К₽</option><option value="backoffice_80k">📋 Бэк-офис (HR, документы) — от 80К₽</option><option value="content_40k">✍️ Контент-фабрика — 40К₽</option><option value="standard_180k">⚡ Стандарт: агент + CRM + RAG — 180К₽</option><option value="team_350k">🏢 Команда: AI-отдел — от 350К₽</option><option value="addon">🔧 Дополнение к агенту</option><option value="other">❓ Другое</option></select><button type="submit" class="cta-submit" id="submitBtn">Получить расчёт экономии →</button></form><div class="cta-proof"><div class="cta-proof-item"><span>⚡</span> Ответ за 24 часа</div><div class="cta-proof-item"><span>🔒</span> Без обязательств</div><div class="cta-proof-item"><span>🎁</span> Гарантия 30 дней</div></div></div><div id="successBlock" class="success-msg"><div class="check-big">✓</div><h3>Заявка отправлена!</h3><p>Свяжусь с вами в Telegram в ближайшие 24 часа.<br>Подготовлю персональный расчёт экономии.</p></div></div></div></section>
 
-      <div id="formBlock">
-        <form class="cta-form" id="leadForm" onsubmit="return submitForm(event)">
-          <input type="text" name="name" placeholder="Ваше имя" required>
-          <input type="tel" name="phone" placeholder="Телефон или Telegram" required>
-          <input type="text" name="company" placeholder="Компания и должность">
-          <select name="interest" required>
-            <option value="" disabled selected>Что хотите автоматизировать?</option>
-            <option value="sales_80k">🎯 Продажи и лидогенерация — от 80К₽</option>
-            <option value="support_80k">🎧 Клиентская поддержка — от 80К₽</option>
-            <option value="backoffice_80k">📋 Бэк-офис (HR, документы) — от 80К₽</option>
-            <option value="content_40k">✍️ Контент-фабрика — 40К₽</option>
-            <option value="standard_180k">⚡ Стандарт: агент + CRM + база знаний — 180К₽</option>
-            <option value="team_350k">🏢 Команда: AI-отдел под ключ — от 350К₽</option>
-            <option value="addon">🔧 Дополнение к существующему агенту</option>
-            <option value="other">❓ Другое — расскажу в сообщении</option>
-          </select>
-          <button type="submit" class="cta-submit" id="submitBtn">Получить расчёт за 24 часа →</button>
-        </form>
-        <p class="cta-note">Бесплатно · Без обязательств · Ответим в Telegram</p>
-      </div>
+<div class="sticky-cta"><a href="#form">Получить расчёт экономии →</a></div>
 
-      <div id="successBlock" class="success-msg">
-        <div class="check-big">✓</div>
-        <h3>Заявка отправлена!</h3>
-        <p>Свяжусь с вами в Telegram в ближайшие 24 часа</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <p style="margin-bottom:8px;"><span class="brand" style="font-size:14px;">AGENT<span style="color:var(--accent)">FORGE</span></span></p>
-    <p>AI-отделы под ключ для среднего бизнеса · 2026</p>
-  </div>
-</footer>
+<footer><div class="container"><p style="margin-bottom:8px"><span class="brand" style="font-size:14px">AGENT<span style="color:var(--accent)">FORGE</span></span></p><p>AI-отделы под ключ для среднего бизнеса · 2026</p></div></footer>
 
 <script>
-// Scroll animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) {
-      entry.target.style.animation = 'fadeUp 0.7s ease both';
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.problem-card,.case-card,.factory-feat,.pkg-card,.addon-card').forEach(el => {
-  el.style.opacity = '0';
-  observer.observe(el);
-});
-
-// Form → Telegram
-async function submitForm(e) {
-  e.preventDefault();
-  const btn = document.getElementById('submitBtn');
-  btn.textContent = 'Отправляю...';
-  btn.disabled = true;
-
-  const form = document.getElementById('leadForm');
-  const data = new FormData(form);
-  const name = data.get('name');
-  const phone = data.get('phone');
-  const company = data.get('company') || 'Не указана';
-  const interest = data.get('interest');
-
-  const interestMap = {
-    'sales_80k': '🎯 Продажи — от 80К₽',
-    'support_80k': '🎧 Поддержка — от 80К₽',
-    'backoffice_80k': '📋 Бэк-офис — от 80К₽',
-    'content_40k': '✍️ Контент-фабрика — 40К₽',
-    'standard_180k': '⚡ Стандарт — 180К₽',
-    'team_350k': '🏢 Команда — от 350К₽',
-    'addon': '🔧 Дополнение',
-    'other': '❓ Другое'
-  };
-
-  const text = `🔥 *Новая заявка AGENTFORGE*\n\n👤 *Имя:* ${name}\n📱 *Контакт:* ${phone}\n🏢 *Компания:* ${company}\n🎯 *Интерес:* ${interestMap[interest] || interest}\n\n⏰ ${new Date().toLocaleString('ru-RU')}`;
-
-  // ⚠️ ВСТАВЬ СВОЙ BOT TOKEN И CHAT ID
-  const BOT_TOKEN = '8727936059:AAEXZqpckjxKdNrq4zpyDdgAgn4RDRQpFgo';
-  const CHAT_ID = '6342044897';
-
-  try {
-    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: CHAT_ID, text: text, parse_mode: 'Markdown' })
-    });
-  } catch(err) {
-    console.log('Lead:', { name, phone, company, interest });
-  }
-
-  document.getElementById('formBlock').style.display = 'none';
-  document.getElementById('successBlock').classList.add('show');
-}
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if(t) t.scrollIntoView({ behavior:'smooth', block:'start' });
-  });
-});
+const observer=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(e.target.style.animation='fadeUp 0.7s ease both',observer.unobserve(e.target))})},{threshold:.1});document.querySelectorAll('.problem-card,.case-card,.factory-feat,.pkg-card,.addon-card,.bridge-card,.about-inner').forEach(e=>{e.style.opacity='0';observer.observe(e)});
+async function submitForm(e){e.preventDefault();const btn=document.getElementById('submitBtn');btn.textContent='Отправляю...';btn.disabled=true;const form=document.getElementById('leadForm'),data=new FormData(form);const name=data.get('name'),phone=data.get('phone'),interest=data.get('interest');const map={'sales_80k':'🎯 Продажи — от 80К₽','support_80k':'🎧 Поддержка — от 80К₽','backoffice_80k':'📋 Бэк-офис — от 80К₽','content_40k':'✍️ Контент-фабрика — 40К₽','standard_180k':'⚡ Стандарт — 180К₽','team_350k':'🏢 Команда — от 350К₽','addon':'🔧 Дополнение','other':'❓ Другое'};const text=`🔥 *Новая заявка AGENTFORGE*\n\n👤 *Имя:* ${name}\n📱 *Контакт:* ${phone}\n🎯 *Интерес:* ${map[interest]||interest}\n\n⏰ ${new Date().toLocaleString('ru-RU')}`;const BOT_TOKEN='8727936059:AAEXZqpckjxKdNrq4zpyDdgAgn4RDRQpFgo',CHAT_ID='6342044897';try{await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:CHAT_ID,text:text,parse_mode:'Markdown'})})}catch(err){console.log('Lead:',{name,phone,interest})}document.getElementById('formBlock').style.display='none';document.getElementById('successBlock').classList.add('show')}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+const formEl=document.getElementById('form'),stickyCta=document.querySelector('.sticky-cta');if(stickyCta){const fObs=new IntersectionObserver(e=>{e.forEach(e=>{stickyCta.style.opacity=e.isIntersecting?'0':'1';stickyCta.style.pointerEvents=e.isIntersecting?'none':'auto'})},{threshold:.1});fObs.observe(formEl)}
 </script>
 </body>
 </html>
